@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <title>Bem-Vindo(a) à Gamezone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-white">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#inicio" >Gamezone</a>
+
+        <!-- Botão para menu em telas menores (celulares) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link active" href="#loja">Loja</a></li>
+            <li class="nav-item"><a class="nav-link" href="#biblioteca">Biblioteca</a></li>
+            <li class="nav-item"><a class="nav-link" href="#carrinho">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+          </ul>
+            
+          <div class="navbar-nav">
+            <a class="nav-link" href="#inicio">Inicio</a>
+            <a class="nav-link" href="#carrinho">Carrinho</a>
+            <a class="nav-link" href="#pedido">Pedido</a>
+            <a class="nav-link" href="#conta">Conta</a>
+          </div>
+      </div>
+    </nav>
+    
+  </header>
+
+  <!-- Seção da Loja / Jogos -->
+  <main class="container my-5" id="loja">
+    <h2 class="mb-4">Jogos em Destaque</h2>
+    
+    <div class="row g-4">
+
+      <!-- Exemplo de Card de Jogo -->
+      <div class="col-md-4">
+        <div class="card bg-secondary text-white h-100">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUowB54uKfhOVonqrFfkw0Iveky4zH6CoXOULgruPdZw&s=10" class="card-img-top" alt="Capa do Jogo">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">GTA VI</h5>
+            <p class="card-text">GTA 6 terá dois protagonistas, Lucia Caminos e Jason Duval, um casal de criminosos à la Bonnie & Clyde. De acordo com o site oficial do game, a dupla vai acabar se envolvendo em uma conspiração criminosa que se estende por todo o estado de Leonida.</p>
+            <p class="fw-bold fs-5 text-warning mb-3">R$ 449,90</p>
+            <button class="btn btn-primary mt-auto">
+              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card bg-secondary text-white h-100">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9goDaVYUwpZfF1pcw9fTPzbCU-Owh_S3oltjA9B-_yyRUhbpT_kPcHAI&s=10" class="card-img-top" alt="Capa do Jogo">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">The Legend of Zelda™: Ocarina of Time</h5>
+            <p class="card-text">Você controla Link, um garoto que vive na Floresta Kokiri. Ele é convocado pela Grande Árvore Deku para impedir os planos do vilão Ganondorf, que tenta conquistar o reino de Hyrule e obter a Triforça (a relíquia sagrada criada pelas deusas).</p>
+            <p class="fw-bold fs-5 text-warning mb-3">R$ 329,90</p>
+            <button class="btn btn-primary mt-auto">
+              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card bg-secondary text-white h-100">
+          <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw4/play-now/MW4LP_BuyNow_MW4VE.webp" class="card-img-top" alt="Capa do Jogo">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Call of Duty: Modern Warfare 4</h5>
+            <p class="card-text"> A história se passa em meio a um conflito global sombrio. De um lado, acompanhamos o recruta sul-coreano Park Hyun-jun lutando nas trincheiras e na linha de frente durante uma invasão em grande escala na Península Coreana. Do outro lado, o icônico Capitão Price lidera uma missão pessoal e paralela nas sombras.</p>
+            <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
+            <button class="btn btn-primary mt-auto">
+              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Adicione mais cards de jogos conforme necessário -->
+    <div>
+      <a></a>
+
+    </div>
