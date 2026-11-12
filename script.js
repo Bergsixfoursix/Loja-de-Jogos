@@ -78,3 +78,31 @@ function removerDoCarrinho(indice) {
   atualizarCarrinho();
 
 }
+
+/* Pesquisa de jogos */
+const pesquisa = document.getElementById("pesquisa-jogos");
+const cardsJogos = document.querySelectorAll(".jogo");
+
+pesquisa.addEventListener("input", function() {
+  const texto = pesquisa.value.toLowerCase();
+  let encontrados = 0;
+
+  cardsJogos.forEach(function(card) {
+    const nomeJogo = card.querySelector(".card-title").textContent.toLowerCase();
+
+    if (nomeJogo.includes(texto)) {
+      card.style.display = "";
+      encontrados++;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+const mensagem = document.getElementById("sem-resultados");
+
+if (encontrados === 0) {
+  mensagem.classList.remove("d-none");
+} else {
+  mensagem.classList.add("d-none");
+}
+});
