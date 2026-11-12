@@ -21,6 +21,7 @@
       font-weight: 800;
       font-size: 1.5rem;
       background: linear-gradient(45deg, var(--accent-purple), var(--accent-cyan));
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -41,6 +42,30 @@
   box-shadow: 0 0 20px rgba(13, 110, 253, 0.4); /* Cria um brilho neon ao redor */
   background-color: #2b2d35 !important; /* Deixa o fundo do card um pouco mais claro */
 }
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover; /* Garante que a imagem não fique distorcida ao redimensionar */
+  width: 100%;       /* Ocupa toda a largura do card */
+  height: 245px;     /* Altura fixa para todas as imagens (você pode ajustar se quiser maior ou menor) */
+  object-fit: cover; /* Recorta a imagem proporcionalmente para caber no espaço sem distorcer */
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card-text {
+    color: #d1d1d1;
+    font-size: 0.95rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
 
     .mb-4{
         background: linear-gradient(135deg, #181920 0%, #0d1117 100%) !important;
