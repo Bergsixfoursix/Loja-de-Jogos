@@ -21,6 +21,7 @@
       font-weight: 800;
       font-size: 1.5rem;
       background: linear-gradient(45deg, var(--accent-purple), var(--accent-cyan));
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -64,8 +65,13 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.form-control {
+    background-color: #ffffff;
+    border: 1px solid #888;
+    color: #050000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-
+}
     .mb-4{
         background: linear-gradient(135deg, #181920 0%, #0d1117 100%) !important;
   border-color: #0955c7 !important;
@@ -73,3 +79,26 @@
   font-weight: bold !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     }
+
+    .preco-antigo {
+            font-size: 14px;
+            color: #888;
+            margin-right: 8px;
+        }
+
+        .preco-novo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e9b91a; /* Verde para destacar o preço atual */
+        }
+
+        .tag-desconto {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
