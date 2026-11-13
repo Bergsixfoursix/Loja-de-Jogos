@@ -41,94 +41,233 @@
   <!-- Seção da Loja / Jogos -->
   <main class="container my-5" id="loja">
     <h2 class="mb-4">Jogos em Destaque</h2>
+
+    <!-- Barra de pesquisa -->
+    <input type="text" id="pesquisa-jogos" class="form-control mb-4" placeholder="Pesquisar jogos..." oninput="filtrarJogos()">
+
+    <!-- Mensagem para pesquisas sem resultados -->
+    <p id="sem-resultados" class="text-center text-warning d-none">
+      Nenhum jogo encontrado.
+    </p>
     
     <div class="row g-4">
 
-      <!-- Exemplo de Card de Jogo -->
-      <div class="col-md-4">
+      <!-- Card 1- GTA VI -->
+      <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://assets.nuuvem.com/image/upload/t_product_sharing_banner/v1/products/5a5fc7f4881024760a00008b/sharing_images/h9xq1d6betwiprblwmvt.jpg" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">GTA VI</h5>
             <p class="card-text">GTA 6 terá dois protagonistas, Lucia Caminos e Jason Duval, um casal de criminosos à la Bonnie & Clyde. De acordo com o site oficial do game, a dupla vai acabar se envolvendo em uma conspiração criminosa que se estende por todo o estado de Leonida.</p>
             <p class="fw-bold fs-5 text-warning mb-3">R$ 449,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(1)">
+               Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="col-md-4">
+      <!-- Card 2 - The Legend of Zelda -->
+      <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://assets.nintendo.com/image/upload/v1788887970/ncom/en_US/merchandising/feature-banner/2026/Zelda%2040th%20Anniversary/Ocarina_of_Time.jpg" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">The Legend of Zelda™: Ocarina of Time</h5>
             <p class="card-text">Você controla Link, um garoto que vive na Floresta Kokiri. Ele é convocado pela Grande Árvore Deku para impedir os planos do vilão Ganondorf, que tenta conquistar o reino de Hyrule e obter a Triforça (a relíquia sagrada criada pelas deusas).</p>
             <p class="fw-bold fs-5 text-warning mb-3">R$ 329,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(2)">
+              Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="col-md-4">
+      <!-- Card 3 - Call of Duty -->
+      <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw4/play-now/MW4LP_BuyNow_MW4VE.webp" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Call of Duty: Modern Warfare 4</h5>
             <p class="card-text"> A história se passa em meio a um conflito global sombrio. De um lado, acompanhamos o recruta sul-coreano Park Hyun-jun lutando nas trincheiras e na linha de frente durante uma invasão em grande escala na Península Coreana. Do outro lado, o icônico Capitão Price lidera uma missão pessoal e paralela nas sombras.</p>
             <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(3)">
+               Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Adicione mais cards de jogos conforme necessário -->
-
-    <div class="col-md-4">
+      <!-- Card 4 - EA Sports UFC 26 -->
+    <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://media.contentapi.ea.com/content/dam/ufc/ufc-6/common/ufc-6-standard-keyart-16x9.jpg.adapt.crop191x100.1200w.jpg" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title"> EA Sports UFC 6</h5>
-            <p class="card-text"> O EA SPORTS™ UFC 6 é um jogo de simulação de artes marciais mistas (MMA) desenvolvido pela EA Swiss Sarl e lançado em 19 de junho de 2026 para PlayStation 5, Xbox Series X|S e PC, com capas estreladas pelos lutadores Alex "Poatan" Pereira (Edição Standard) e Max Holloway (Edição Ultimate)</p>
+            <h5 class="card-title"> EA Sports UFC 26</h5>
+            <p class="card-text"> O EA SPORTS™ UFC 26 é um jogo de simulação de artes marciais mistas (MMA) desenvolvido pela EA Swiss Sarl e lançado em 19 de junho de 2026 para PlayStation 5, Xbox Series X|S e PC, com capas estreladas pelos lutadores Alex "Poatan" Pereira (Edição Standard) e Max Holloway (Edição Ultimate)</p>
             <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(4)">
+              Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
-
-      <div class="col-md-4">
+      <!-- Card 5 - EA Sports FC  27 -->
+      <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000110117/9c0bf199f3618ac6c79c6cdff06d3662a7d89d46621e5ef05c100891e95a4a97" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"> EA SPORTS FC 27</h5>
                 <p class="card-text"> EA SPORTS FC 27 é o mais recente entry da série EA SPORTS FC, trazendo uma experiência de jogo aprimorada com gráficos impressionantes e mecânicas de jogo atualizadas.</p>
                 <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(5)">
+              Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
-
-      <div class="col-md-4">
+      
+      <!-- Card 6- Phantom Blade Zero -->
+      <div class="col-md-4 jogo">
         <div class="card bg-secondary text-white h-100">
           <img src="https://assets.nuuvem.com/image/upload/v1/products/6ad8c6ae4fd6b1ac1fdccf39/sharing_images/iewxsnlazfo4tu8fiyyi.jpg" class="card-img-top" alt="Capa do Jogo">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"> Phantom Blade Zero </h5>
             <p class="card-text"> Phantom Blade Zero é um jogo de ação e aventura que combina elementos de RPG com batalhas em tempo real, oferecendo uma experiência imersiva e envolvente.</p>
-            <p class="fw-bold fs-5 text-warning mb-3">R$ 229,90</p>
-            <button class="btn btn-primary mt-auto">
-              <i class="fa-solid fa-cart-shopping"></i> Adicionar ao Carrinho
+            
+            <div class="card-produto">
+        <span class="tag-desconto">87% OFF</span>
+        <div class="preco">
+            <span class="preco-antigo">R$ <del>229,90</del></span>
+            <span class="preco-novo">R$ 199,90</span>
+        </div>
+    </div>
+    
+            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(6)">
+                Adicionar ao Carrinho
             </button>
           </div>
         </div>
       </div>
+          </div>
+        </main>
+
+    <!-- Seção do Carrinho -->
+  <section id="carrinho" class="container my-5">
+    <h2 class="mb-4">Meu Carrinho</h2>
+
+
+    <div id="lista-carrinho">
+      <p>Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <h4>
+        Total: <span id="total-carrinho" class="text-warning">R$ 0,00</span>
+      </h4>
+      <button id="btn-ir-pagamento" class="btn btn-success btn-lg d-none" onclick="mostrarFormularioPagamento()">
+        Prosseguir para o Pagamento
+      </button>
+    </div>
+  </section>
+
+  <!-- Seção de Pagamento / Pedido -->
+  <section id="pedido" class="container my-5 d-none">
+    <div class=" bg-secondary text-white p-4 shadow">
+      <h2 class="mb-4">Finalizar Pedido</h2>
+
+      <form id="form-pagamento">
+        <div class="row g-3">
+
+          <!-- Dados do Comprador -->
+          <div class="col-md-6">
+           
+            <label class for="nome-cliente" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" id="nome-cliente" placeholder="Ex: João Silva" required>
+          </div>
+          
+
+          <div class="col-md-6">
+            <label for="email-cliente" class="form-label">E-mail (para envio das chaves)</label>
+            <input type="email" class="form-control" id="email-cliente" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="cpf-cliente" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf-cliente" placeholder="000.000.000-00" required>
+          </div>
+
+          <!-- Forma de Pagamento -->
+          <div class="col-md-6">
+            <label for="metodo-pagamento" class="form-label">Forma de Pagamento</label>
+            <select class="form-select" id="metodo-pagamento" onchange="alternarCamposPagamento()" required>
+              <option value="cartao">Cartão de Crédito</option>
+              <option value="pix">PIX (Aprovação Imediata)</option>
+              <option value="boleto">Boleto Bancário</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Campos específicos para Cartão de Crédito -->
+        <div id="dados-cartao" class="row g-3 mt-2">
+          <div class="col-md-6">
+            <label for="numero-cartao" class="form-label">Número do Cartão</label>
+            <input type="text" class="form-control" id="numero-cartao" placeholder="0000 0000 0000 0000">
+          </div>
+          <div class="col-md-3">
+            <label for="validade-cartao" class="form-label">Validade</label>
+            <input type="text" class="form-control" id="validade-cartao" placeholder="MM/AA">
+          </div>
+          <div class="col-md-3">
+            <label for="cvv-cartao" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="cvv-cartao" placeholder="123">
+          </div>
+        </div>
+
+        <!-- Aviso para PIX -->
+        <div id="dados-pix" class="alert alert-info mt-3 d-none">
+          Ao confirmar o pedido, um código QR Code PIX será gerado para pagamento instantâneo.
+        </div>
+
+        <!-- Aviso para Boleto -->
+        <div id="dados-boleto" class="alert alert-warning mt-3 d-none">
+          O boleto bancário vence em 3 dias úteis. As chaves dos jogos serão liberadas após a compensação.
+        </div>
+
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h5>Valor Final: <span id="total-pagamento" class="text-warning">R$ 0,00</span></h5>
+          <div>
+            <button type="button" class="btn btn-outline-light me-2" onclick="cancelarPagamento()">Cancelar</button>
+            <button type="submit" class="btn btn-primary btn-lg">Confirmar Pagamento</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+  
+      <!-- Rodapé -->
+<footer class="bg-dark text-white text-center py-4">
+
+    <div class="container">
+        <p class="mb-2">
+            &copy; 2026 Gamezone.com
+            Todos os direitos reservados.
+        </p>
+
+        <p class="mb-0">
+            Desenvolvido com HTML, CSS,
+            Bootstrap e JavaScript.
+        </p>
+    </div>
+   
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
