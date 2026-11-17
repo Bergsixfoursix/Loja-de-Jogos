@@ -42,6 +42,7 @@ function adicionarAoCarrinho(id) {
     atualizarCarrinho();
     mostrarNotificacao(jogo.nome);
   }
+}
 
   /* Notificação de produto adicionado */
 function mostrarNotificacao(nomeJogo) {
@@ -55,8 +56,6 @@ function mostrarNotificacao(nomeJogo) {
   setTimeout(function() {
     notificacao.remove();
   }, 3000);
-}
-
 }
 
 /* Notificação de jogo removido */
@@ -87,6 +86,19 @@ function removerDoCarrinho(indice) {
   mostrarNotificacaoRemocao(jogoRemovido.nome);
 
 }
+
+/* Função para limpar todo o carrinho */
+function limparCarrinho() {
+    if (carrinho.length === 0) return;
+
+    const confirmar = confirm("Deseja remover todos os jogos do carrinho?");
+
+    if (confirmar) {
+        carrinho = [];
+        atualizarCarrinho();
+    }
+}
+
 /*Função para mostrar a biblioteca*/
 function mostrarBiblioteca() {
   const loja = document.getElementById("loja");
@@ -141,6 +153,7 @@ function atualizarCarrinho() {
   const totalPagamentoElemento = document.getElementById("total-pagamento"); // Novo
   const contador = document.getElementById("cart-count");
   const btnIrPagamento = document.getElementById("btn-ir-pagamento"); // Novo
+  const btnLimparCarrinho = document.getElementById("btn-limpar-carrinho");
 
   lista.innerHTML = "";
   let total = 0;
@@ -169,8 +182,10 @@ function atualizarCarrinho() {
     btnIrPagamento.classList.add("d-none"); // Esconde o botão se esvaziar
     document.getElementById("pedido").classList.add("d-none"); // Esconde o formulário
     document.getElementById("carrinho").classList.remove("d-none");
+    btnLimparCarrinho.classList.add("d-none");
   } else {
     btnIrPagamento.classList.remove("d-none"); // Mostra o botão se houver itens
+    btnLimparCarrinho.classList.remove("d-none");
   }
 
   const totalFormatado = total.toLocaleString("pt-BR", {
