@@ -164,4 +164,9 @@
         transform: translateX(100px);
     }
 }
+
+/* Notificação de jogo removido */
+.notificacao-remocao {
+    background-color: #dc3545;
+}
         

@@ -58,13 +58,33 @@ function mostrarNotificacao(nomeJogo) {
 }
 
 }
+
+/* Notificação de jogo removido */
+function mostrarNotificacaoRemocao(nomeJogo) {
+    const notificacao = document.createElement("div");
+
+    notificacao.className = "notificacao-carrinho notificacao-remocao";
+
+    notificacao.textContent = `✖ ${nomeJogo} removido do carrinho!`;
+
+    document.body.appendChild(notificacao);
+
+    setTimeout(function() {
+        notificacao.remove();
+    }, 3000);
+}
+
  
 /*Função para remover o jogo*/
 function removerDoCarrinho(indice) {
 
+  const jogoRemovido = carrinho[indice];
+
   carrinho.splice(indice, 1);
 
   atualizarCarrinho();
+
+  mostrarNotificacaoRemocao(jogoRemovido.nome);
 
 }
 /*Função para mostrar a biblioteca*/
