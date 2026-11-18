@@ -172,9 +172,28 @@ function atualizarCarrinho() {
   lista.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach((jogo, indice) => {
-    total += jogo.preco;
-    lista.innerHTML += `
+  const quantidades = {};
+
+carrinho.forEach(function(jogo) {
+  if (quantidades[jogo.id]) {
+    quantidades[jogo.id]++;
+  } else {
+    quantidades[jogo.id] = 1;
+  }
+});
+
+  const jogosExibidos = new Set();
+
+carrinho.forEach((jogo, indice) => {
+  total += jogo.preco;
+
+  if (jogosExibidos.has(jogo.id)) {
+    return;
+  }
+
+  jogosExibidos.add(jogo.id);
+
+  lista.innerHTML += `
       <div class="card bg-secondary text-white mb-3">
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
@@ -183,9 +202,19 @@ function atualizarCarrinho() {
               R$ ${jogo.preco.toFixed(2).replace(".", ",")}
             </p>
           </div>
-          <button class="btn btn-danger" onclick="removerDoCarrinho(${indice})">
-            Remover
-          </button>
+          <div class="d-flex align-items-center gap-2">
+
+  <button class="btn btn-outline-light btn-sm"
+    onclick="diminuirQuantidade(${jogo.id})">−</button>
+
+  <span>${quantidades[jogo.id]}</span>
+
+  <button class="btn btn-outline-light btn-sm"
+    onclick="aumentarQuantidade(${jogo.id})">+</button>
+
+  <button class="btn btn-danger btn-sm"
+    onclick="removerDoCarrinho(${indice})">Remover</button>
+</div>
         </div>
       </div>
     `;
@@ -212,6 +241,24 @@ function atualizarCarrinho() {
     totalPagamentoElemento.textContent = totalFormatado;
   }
   contador.textContent = carrinho.length;
+}
+
+function aumentarQuantidade(id) {
+  const jogo = jogos.find(jogo => jogo.id === id);
+
+  if (jogo) {
+    carrinho.push(jogo);
+    atualizarCarrinho();
+  }
+}
+
+function diminuirQuantidade(id) {
+  const indice = carrinho.findIndex(jogo => jogo.id === id);
+
+  if (indice !== -1) {
+    carrinho.splice(indice, 1);
+    atualizarCarrinho();
+  }
 }
 
 /* --- NOVAS FUNÇÕES PARA O PAGAMENTO --- */
