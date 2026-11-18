@@ -115,21 +115,41 @@ function mostrarLoja() {
 /* Pesquisa de jogos */
 const pesquisa = document.getElementById("pesquisa-jogos");
 const cardsJogos = document.querySelectorAll(".jogo");
+const biblioteca = document.getElementById("biblioteca");
+const loja = document.getElementById("loja");
+const resultadosBiblioteca = document.getElementById("resultados-biblioteca");
 
 pesquisa.addEventListener("input", function() {
   const texto = pesquisa.value.toLowerCase();
   let encontrados = 0;
 
-  cardsJogos.forEach(function(card) {
-    const nomeJogo = card.querySelector(".card-title").textContent.toLowerCase();
+  resultadosBiblioteca.innerHTML = "";
+resultadosBiblioteca.classList.add("d-none");
 
-    if (nomeJogo.includes(texto)) {
-      card.style.display = "";
-      encontrados++;
-    } else {
-      card.style.display = "none";
+const nomesEncontrados = new Set();
+
+cardsJogos.forEach(function(card) {
+  const nomeJogo = card.querySelector(".card-title").textContent.trim().toLowerCase();
+  const corresponde = nomeJogo.includes(texto);
+  const estaNaLoja = loja.contains(card);
+
+  if (estaNaLoja) {
+    card.style.display = corresponde ? "" : "none";
+  } else {
+    card.style.display = "";
+  }
+
+  if (corresponde && !nomesEncontrados.has(nomeJogo)) {
+    nomesEncontrados.add(nomeJogo);
+    encontrados++;
+
+    if (!estaNaLoja && texto !== "") {
+      const copia = card.cloneNode(true);
+      resultadosBiblioteca.appendChild(copia);
+      resultadosBiblioteca.classList.remove("d-none");
     }
-  });
+  }
+});
 
 const mensagem = document.getElementById("sem-resultados");
 
