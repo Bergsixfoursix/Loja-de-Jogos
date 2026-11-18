@@ -350,12 +350,45 @@
 
       <button id="btn-limpar-carrinho"
               class="btn btn-danger btn-lg d-none"
-              onclick="limparCarrinho()">
+              data-bs-toggle="modal"
+              data-bs-target="#modalLimparCarrinho">
        Limpar Carrinho
       </button>
       
     </div>
   </section>
+
+  <!-- Janela de confirmação para limpar o carrinho -->
+<div class="modal fade" id="modalLimparCarrinho" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Limpar Carrinho</h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        Deseja realmente remover todos os jogos do carrinho?
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">
+          Cancelar
+        </button>
+
+        <button type="button" class="btn btn-danger"
+                onclick="limparCarrinho()"
+                data-bs-dismiss="modal">
+          Limpar Carrinho
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
   <!-- Seção de Pagamento / Pedido -->
   <section id="pedido" class="container my-5 d-none">

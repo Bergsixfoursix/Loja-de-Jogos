@@ -89,14 +89,8 @@ function removerDoCarrinho(indice) {
 
 /* Função para limpar todo o carrinho */
 function limparCarrinho() {
-    if (carrinho.length === 0) return;
-
-    const confirmar = confirm("Deseja remover todos os jogos do carrinho?");
-
-    if (confirmar) {
-        carrinho = [];
-        atualizarCarrinho();
-    }
+    carrinho = [];
+    atualizarCarrinho();
 }
 
 /*Função para mostrar a biblioteca*/
