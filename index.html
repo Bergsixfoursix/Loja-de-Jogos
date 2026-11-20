@@ -3,252 +3,610 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Bem-Vindo(a) à Gamezone</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navigation.css">
+  <link rel="stylesheet" href="assets/css/games.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
 </head>
 <body class="bg-dark text-white">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#inicio" >Gamezone</a>
-
-        <!-- Botão para menu em telas menores (celulares) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link active" href="#loja">Loja</a></li>
-            <li class="nav-item"><a class="nav-link" href="#biblioteca">Biblioteca</a></li>
-            <li class="nav-item"><a class="nav-link" href="#carrinho">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
-          </ul>
-            
-          <div class="navbar-nav">
-            <a class="nav-link" href="#inicio">Inicio</a>
-            <a class="nav-link" href="#carrinho">Carrinho</a>
-            <a class="nav-link" href="#pedido">Pedido</a>
-            <a class="nav-link" href="#conta">Conta</a>
-          </div>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Gamezone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/categorias.html">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/carrinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+        </ul>
+        <div class="navbar-nav">
+          <a class="nav-link" href="pages/pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
+          <a class="nav-link" href="pages/conta.html">Conta</a>
+        </div>
       </div>
-    </nav>
-    
-  </header>
-
-  <!-- Seção da Loja / Jogos -->
+    </div>
+  </nav>
+</header>
+<!-- Seção da Loja / Jogos -->
   <main class="container my-5" id="loja">
     <h2 class="mb-4">Jogos em Destaque</h2>
 
     <!-- Barra de pesquisa -->
-    <input type="text" id="pesquisa-jogos" class="form-control mb-4" placeholder="Pesquisar jogos..." oninput="filtrarJogos()">
+    <input type="text" id="pesquisa-jogos" class="form-control mb-4" placeholder="Pesquisar jogos...">
 
     <!-- Mensagem para pesquisas sem resultados -->
     <p id="sem-resultados" class="text-center text-warning d-none">
       Nenhum jogo encontrado.
     </p>
-    
+
     <div class="row g-4">
 
       <!-- Card 1- GTA VI -->
-      <div class="col-md-4 jogo">
+      <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://assets.nuuvem.com/image/upload/t_product_sharing_banner/v1/products/5a5fc7f4881024760a00008b/sharing_images/h9xq1d6betwiprblwmvt.jpg" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">GTA VI</h5>
-            <p class="card-text">GTA 6 terá dois protagonistas, Lucia Caminos e Jason Duval, um casal de criminosos à la Bonnie & Clyde. De acordo com o site oficial do game, a dupla vai acabar se envolvendo em uma conspiração criminosa que se estende por todo o estado de Leonida.</p>
-            <p class="fw-bold fs-5 text-warning mb-3">R$ 449,90</p>
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(1)">
-               Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de GTA VI" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="1">
+            <img src="https://assets.nuuvem.com/image/upload/t_product_sharing_banner/v1/products/5a5fc7f4881024760a00008b/sharing_images/h9xq1d6betwiprblwmvt.jpg" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">GTA VI</h5>
           </div>
         </div>
       </div>
 
       <!-- Card 2 - The Legend of Zelda -->
-      <div class="col-md-4 jogo">
+      <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://assets.nintendo.com/image/upload/v1788887970/ncom/en_US/merchandising/feature-banner/2026/Zelda%2040th%20Anniversary/Ocarina_of_Time.jpg" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">The Legend of Zelda™: Ocarina of Time</h5>
-            <p class="card-text">Você controla Link, um garoto que vive na Floresta Kokiri. Ele é convocado pela Grande Árvore Deku para impedir os planos do vilão Ganondorf, que tenta conquistar o reino de Hyrule e obter a Triforça (a relíquia sagrada criada pelas deusas).</p>
-            <p class="fw-bold fs-5 text-warning mb-3">R$ 329,90</p>
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(2)">
-              Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de The Legend of Zelda: Ocarina of Time" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="2">
+            <img src="https://assets.nintendo.com/image/upload/v1788887970/ncom/en_US/merchandising/feature-banner/2026/Zelda%2040th%20Anniversary/Ocarina_of_Time.jpg" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">The Legend of Zelda™: Ocarina of Time</h5>
           </div>
         </div>
       </div>
 
       <!-- Card 3 - Call of Duty -->
-      <div class="col-md-4 jogo">
+      <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw4/play-now/MW4LP_BuyNow_MW4VE.webp" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Call of Duty: Modern Warfare 4</h5>
-            <p class="card-text"> A história se passa em meio a um conflito global sombrio. De um lado, acompanhamos o recruta sul-coreano Park Hyun-jun lutando nas trincheiras e na linha de frente durante uma invasão em grande escala na Península Coreana. Do outro lado, o icônico Capitão Price lidera uma missão pessoal e paralela nas sombras.</p>
-            <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(3)">
-               Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Call of Duty: Modern Warfare 4" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="3">
+            <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw4/play-now/MW4LP_BuyNow_MW4VE.webp" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">Call of Duty: Modern Warfare 4</h5>
           </div>
         </div>
       </div>
 
-      <!-- Card 4 - EA Sports UFC 26 -->
-    <div class="col-md-4 jogo">
+      <!-- Card 4 - EA Sports UFC 6 -->
+    <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://media.contentapi.ea.com/content/dam/ufc/ufc-6/common/ufc-6-standard-keyart-16x9.jpg.adapt.crop191x100.1200w.jpg" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"> EA Sports UFC 26</h5>
-            <p class="card-text"> O EA SPORTS™ UFC 26 é um jogo de simulação de artes marciais mistas (MMA) desenvolvido pela EA Swiss Sarl e lançado em 19 de junho de 2026 para PlayStation 5, Xbox Series X|S e PC, com capas estreladas pelos lutadores Alex "Poatan" Pereira (Edição Standard) e Max Holloway (Edição Ultimate)</p>
-            <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(4)">
-              Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de EA Sports UFC 6" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="4">
+            <img src="https://media.contentapi.ea.com/content/dam/ufc/ufc-6/common/ufc-6-standard-keyart-16x9.jpg.adapt.crop191x100.1200w.jpg" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">EA Sports UFC 6</h5>
           </div>
         </div>
       </div>
       <!-- Card 5 - EA Sports FC  27 -->
-      <div class="col-md-4 jogo">
+      <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000110117/9c0bf199f3618ac6c79c6cdff06d3662a7d89d46621e5ef05c100891e95a4a97" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"> EA SPORTS FC 27</h5>
-                <p class="card-text"> EA SPORTS FC 27 é o mais recente entry da série EA SPORTS FC, trazendo uma experiência de jogo aprimorada com gráficos impressionantes e mecânicas de jogo atualizadas.</p>
-                <p class="fw-bold fs-5 text-warning mb-3">R$ 349,90</p>
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(5)">
-              Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de EA SPORTS FC 27" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="5">
+            <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000110117/9c0bf199f3618ac6c79c6cdff06d3662a7d89d46621e5ef05c100891e95a4a97" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">EA SPORTS FC 27</h5>
           </div>
         </div>
       </div>
       
       <!-- Card 6- Phantom Blade Zero -->
-      <div class="col-md-4 jogo">
+      <div class="col-6 col-lg-4 jogo">
         <div class="card bg-secondary text-white h-100">
-          <img src="https://assets.nuuvem.com/image/upload/v1/products/6ad8c6ae4fd6b1ac1fdccf39/sharing_images/iewxsnlazfo4tu8fiyyi.jpg" class="card-img-top" alt="Capa do Jogo">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"> Phantom Blade Zero </h5>
-            <p class="card-text"> Phantom Blade Zero é um jogo de ação e aventura que combina elementos de RPG com batalhas em tempo real, oferecendo uma experiência imersiva e envolvente.</p>
-            
-            <div class="card-produto">
-        <span class="tag-desconto">87% OFF</span>
-        <div class="preco">
-            <span class="preco-antigo">R$ <del>229,90</del></span>
-            <span class="preco-novo">R$ 199,90</span>
-        </div>
-    </div>
-    
-            <button class="btn btn-primary mt-auto" onclick="adicionarAoCarrinho(6)">
-                Adicionar ao Carrinho
-            </button>
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Phantom Blade Zero" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="6">
+            <img src="https://assets.nuuvem.com/image/upload/v1/products/6ad8c6ae4fd6b1ac1fdccf39/sharing_images/iewxsnlazfo4tu8fiyyi.jpg" class="card-img-top" alt="Capa do Jogo">
+            <h5 class="card-title game-title-overlay">Phantom Blade Zero</h5>
           </div>
         </div>
       </div>
+
+      <!-- Card 7 - Red Dead Redemption 2 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Red Dead Redemption 2" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="7">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg" class="card-img-top" alt="Capa de Red Dead Redemption 2">
+            <h5 class="card-title game-title-overlay">Red Dead Redemption 2</h5>
           </div>
+        </div>
+      </div>
+
+      <!-- Card 8 - Elden Ring -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Elden Ring" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="8">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg" class="card-img-top" alt="Capa de Elden Ring">
+            <h5 class="card-title game-title-overlay">Elden Ring</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 - Hogwarts Legacy -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Hogwarts Legacy" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="9">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/header.jpg" class="card-img-top" alt="Capa de Hogwarts Legacy">
+            <h5 class="card-title game-title-overlay">Hogwarts Legacy</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 - Cyberpunk 2077 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Cyberpunk 2077" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="10">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg" class="card-img-top" alt="Capa de Cyberpunk 2077">
+            <h5 class="card-title game-title-overlay">Cyberpunk 2077</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 - God of War Ragnarök -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de God of War Ragnarök" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="11">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" class="card-img-top" alt="Capa de God of War Ragnarök" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">God of War Ragnarök</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 - Marvel's Spider-Man Remastered -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Marvel's Spider-Man Remastered" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="12">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg" class="card-img-top" alt="Capa de Marvel's Spider-Man Remastered" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Marvel's Spider-Man Remastered</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 13 - Ghost of Tsushima Director's Cut -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Ghost of Tsushima Director's Cut" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="13">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg" class="card-img-top" alt="Capa de Ghost of Tsushima Director's Cut" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Ghost of Tsushima Director's Cut</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 14 - Resident Evil 4 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Resident Evil 4" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="14">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg" class="card-img-top" alt="Capa de Resident Evil 4" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Resident Evil 4</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 15 - Baldur's Gate 3 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Baldur's Gate 3" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="15">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg" class="card-img-top" alt="Capa de Baldur's Gate 3" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Baldur's Gate 3</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 16 - Forza Horizon 5 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Forza Horizon 5" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="16">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg" class="card-img-top" alt="Capa de Forza Horizon 5" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Forza Horizon 5</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 17 - The Witcher 3: Wild Hunt -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de The Witcher 3: Wild Hunt" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="17">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/header.jpg" class="card-img-top" alt="Capa de The Witcher 3: Wild Hunt" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">The Witcher 3: Wild Hunt</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 18 - Terraria -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Terraria" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="18">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg" class="card-img-top" alt="Capa de Terraria" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Terraria</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 19 - Stardew Valley -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Stardew Valley" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="19">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg" class="card-img-top" alt="Capa de Stardew Valley" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Stardew Valley</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 20 - Hollow Knight -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Hollow Knight" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="20">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/header.jpg" class="card-img-top" alt="Capa de Hollow Knight" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Hollow Knight</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 21 - Palworld -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Palworld" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="21">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1623730/header.jpg" class="card-img-top" alt="Capa de Palworld" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Palworld</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 22 - Sea of Thieves -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Sea of Thieves" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="22">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172620/header.jpg" class="card-img-top" alt="Capa de Sea of Thieves" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Sea of Thieves</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 23 - Assassin's Creed Valhalla -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Assassin's Creed Valhalla" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="23">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2208920/header.jpg" class="card-img-top" alt="Capa de Assassin's Creed Valhalla" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Assassin's Creed Valhalla</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 24 - Mortal Kombat 1 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Mortal Kombat 1" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="24">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1971870/header.jpg" class="card-img-top" alt="Capa de Mortal Kombat 1" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Mortal Kombat 1</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 25 - TEKKEN 8 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de TEKKEN 8" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="25">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/header.jpg" class="card-img-top" alt="Capa de TEKKEN 8" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">TEKKEN 8</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 26 - Borderlands 3 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Borderlands 3" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="26">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397540/header.jpg" class="card-img-top" alt="Capa de Borderlands 3" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Borderlands 3</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 27 - DOOM Eternal -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de DOOM Eternal" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="27">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/782330/header.jpg" class="card-img-top" alt="Capa de DOOM Eternal" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">DOOM Eternal</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 28 - Hades II -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Hades II" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="28">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/header.jpg" class="card-img-top" alt="Capa de Hades II" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Hades II</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 29 - Monster Hunter Wilds -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Monster Hunter Wilds" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="29">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg" class="card-img-top" alt="Capa de Monster Hunter Wilds" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Monster Hunter Wilds</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 30 - It Takes Two -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de It Takes Two" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="30">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg" class="card-img-top" alt="Capa de It Takes Two" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">It Takes Two</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 31 - The Last of Us Part I -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de The Last of Us Part I" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="31">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/header.jpg" class="card-img-top" alt="Capa de The Last of Us Part I" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">The Last of Us Part I</h5>
+            <span class="tag-desconto game-discount-overlay">13% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 32 - God of War -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de God of War" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="32">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg" class="card-img-top" alt="Capa de God of War" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">God of War</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 33 - Uncharted: Legacy of Thieves Collection -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Uncharted: Legacy of Thieves Collection" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="33">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1659420/header.jpg" class="card-img-top" alt="Capa de Uncharted: Legacy of Thieves Collection" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Uncharted: Legacy of Thieves Collection</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 34 - FINAL FANTASY VII REMAKE INTERGRADE -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de FINAL FANTASY VII REMAKE INTERGRADE" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="34">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1462040/header.jpg" class="card-img-top" alt="Capa de FINAL FANTASY VII REMAKE INTERGRADE" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">FINAL FANTASY VII REMAKE INTERGRADE</h5>
+            <span class="tag-desconto game-discount-overlay">15% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 35 - FINAL FANTASY VII REBIRTH -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de FINAL FANTASY VII REBIRTH" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="35">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2909400/header.jpg" class="card-img-top" alt="Capa de FINAL FANTASY VII REBIRTH" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">FINAL FANTASY VII REBIRTH</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 36 - Street Fighter 6 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Street Fighter 6" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="36">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/header.jpg" class="card-img-top" alt="Capa de Street Fighter 6" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Street Fighter 6</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 37 - TEKKEN 7 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de TEKKEN 7" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="37">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/389730/header.jpg" class="card-img-top" alt="Capa de TEKKEN 7" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">TEKKEN 7</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 38 - Resident Evil 2 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Resident Evil 2" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="38">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/883710/header.jpg" class="card-img-top" alt="Capa de Resident Evil 2" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Resident Evil 2</h5>
+            <span class="tag-desconto game-discount-overlay">11% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 39 - Resident Evil 3 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Resident Evil 3" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="39">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/952060/header.jpg" class="card-img-top" alt="Capa de Resident Evil 3" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Resident Evil 3</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 40 - Resident Evil Village -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Resident Evil Village" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="40">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg" class="card-img-top" alt="Capa de Resident Evil Village" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Resident Evil Village</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 41 - Assassin's Creed Odyssey -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Assassin's Creed Odyssey" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="41">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/812140/header.jpg" class="card-img-top" alt="Capa de Assassin's Creed Odyssey" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Assassin's Creed Odyssey</h5>
+            <span class="tag-desconto game-discount-overlay">9% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 42 - Assassin's Creed Origins -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Assassin's Creed Origins" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="42">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582160/header.jpg" class="card-img-top" alt="Capa de Assassin's Creed Origins" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Assassin's Creed Origins</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 43 - Far Cry 5 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Far Cry 5" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="43">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/552520/header.jpg" class="card-img-top" alt="Capa de Far Cry 5" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Far Cry 5</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 44 - Far Cry 6 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Far Cry 6" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="44">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2369390/header.jpg" class="card-img-top" alt="Capa de Far Cry 6" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Far Cry 6</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 45 - The Elder Scrolls V: Skyrim Special Edition -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de The Elder Scrolls V: Skyrim Special Edition" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="45">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/header.jpg" class="card-img-top" alt="Capa de The Elder Scrolls V: Skyrim Special Edition" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">The Elder Scrolls V: Skyrim Special Edition</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 46 - Diablo IV -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Diablo IV" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="46">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2344520/header.jpg" class="card-img-top" alt="Capa de Diablo IV" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Diablo IV</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 47 - Persona 5 Royal -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Persona 5 Royal" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="47">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1687950/header.jpg" class="card-img-top" alt="Capa de Persona 5 Royal" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Persona 5 Royal</h5>
+            <span class="tag-desconto game-discount-overlay">12% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 48 - NieR:Automata -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de NieR:Automata" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="48">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg" class="card-img-top" alt="Capa de NieR:Automata" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">NieR:Automata</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 49 - Sekiro: Shadows Die Twice -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Sekiro: Shadows Die Twice" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="49">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg" class="card-img-top" alt="Capa de Sekiro: Shadows Die Twice" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Sekiro: Shadows Die Twice</h5>
+            <span class="tag-desconto game-discount-overlay">13% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 50 - DARK SOULS III -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de DARK SOULS III" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="50">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg" class="card-img-top" alt="Capa de DARK SOULS III" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">DARK SOULS III</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 51 - Lies of P -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Lies of P" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="51">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1627720/header.jpg" class="card-img-top" alt="Capa de Lies of P" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Lies of P</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 52 - Tomb Raider -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Tomb Raider" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="52">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/203160/header.jpg" class="card-img-top" alt="Capa de Tomb Raider" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Tomb Raider</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 53 - Rise of the Tomb Raider -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Rise of the Tomb Raider" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="53">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/391220/header.jpg" class="card-img-top" alt="Capa de Rise of the Tomb Raider" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Rise of the Tomb Raider</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 54 - Need for Speed Heat -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de Need for Speed Heat" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="54">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1222680/header.jpg" class="card-img-top" alt="Capa de Need for Speed Heat" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">Need for Speed Heat</h5>
+            <span class="tag-desconto game-discount-overlay">14% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 55 - F1 24 -->
+      <div class="col-6 col-lg-4 jogo">
+        <div class="card bg-secondary text-white h-100">
+          <div class="game-cover" tabindex="0" role="button" aria-label="Ver detalhes de F1 24" aria-controls="detalhes-jogo" aria-expanded="false" data-game-id="55">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2488620/header.jpg" class="card-img-top" alt="Capa de F1 24" onerror="this.style.display='none';this.parentElement.classList.add('game-cover-fallback')">
+            <h5 class="card-title game-title-overlay">F1 24</h5>
+            <span class="tag-desconto game-discount-overlay">12% OFF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="detalhes-jogo" class="game-details-panel d-none mt-5" aria-live="polite" aria-labelledby="detalhes-jogo-titulo"></section>
         </main>
-
-    <!-- Seção do Carrinho -->
-  <section id="carrinho" class="container my-5">
-    <h2 class="mb-4">Meu Carrinho</h2>
-
-
-    <div id="lista-carrinho">
-      <p>Seu carrinho está vazio.</p>
-    </div>
-
-    <div class="d-flex justify-content-between align-items-center mt-4">
-      <h4>
-        Total: <span id="total-carrinho" class="text-warning">R$ 0,00</span>
-      </h4>
-      <button id="btn-ir-pagamento" class="btn btn-success btn-lg d-none" onclick="mostrarFormularioPagamento()">
-        Prosseguir para o Pagamento
-      </button>
-    </div>
-  </section>
-
-  <!-- Seção de Pagamento / Pedido -->
-  <section id="pedido" class="container my-5 d-none">
-    <div class=" bg-secondary text-white p-4 shadow">
-      <h2 class="mb-4">Finalizar Pedido</h2>
-
-      <form id="form-pagamento">
-        <div class="row g-3">
-
-          <!-- Dados do Comprador -->
-          <div class="col-md-6">
-           
-            <label class for="nome-cliente" class="form-label">Nome Completo</label>
-            <input type="text" class="form-control" id="nome-cliente" placeholder="Ex: João Silva" required>
-          </div>
-          
-
-          <div class="col-md-6">
-            <label for="email-cliente" class="form-label">E-mail (para envio das chaves)</label>
-            <input type="email" class="form-control" id="email-cliente" placeholder="seuemail@exemplo.com" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="cpf-cliente" class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf-cliente" placeholder="000.000.000-00" required>
-          </div>
-
-          <!-- Forma de Pagamento -->
-          <div class="col-md-6">
-            <label for="metodo-pagamento" class="form-label">Forma de Pagamento</label>
-            <select class="form-select" id="metodo-pagamento" onchange="alternarCamposPagamento()" required>
-              <option value="cartao">Cartão de Crédito</option>
-              <option value="pix">PIX (Aprovação Imediata)</option>
-              <option value="boleto">Boleto Bancário</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Campos específicos para Cartão de Crédito -->
-        <div id="dados-cartao" class="row g-3 mt-2">
-          <div class="col-md-6">
-            <label for="numero-cartao" class="form-label">Número do Cartão</label>
-            <input type="text" class="form-control" id="numero-cartao" placeholder="0000 0000 0000 0000">
-          </div>
-          <div class="col-md-3">
-            <label for="validade-cartao" class="form-label">Validade</label>
-            <input type="text" class="form-control" id="validade-cartao" placeholder="MM/AA">
-          </div>
-          <div class="col-md-3">
-            <label for="cvv-cartao" class="form-label">CVV</label>
-            <input type="text" class="form-control" id="cvv-cartao" placeholder="123">
-          </div>
-        </div>
-
-        <!-- Aviso para PIX -->
-        <div id="dados-pix" class="alert alert-info mt-3 d-none">
-          Ao confirmar o pedido, um código QR Code PIX será gerado para pagamento instantâneo.
-        </div>
-
-        <!-- Aviso para Boleto -->
-        <div id="dados-boleto" class="alert alert-warning mt-3 d-none">
-          O boleto bancário vence em 3 dias úteis. As chaves dos jogos serão liberadas após a compensação.
-        </div>
-
-        <hr class="my-4">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h5>Valor Final: <span id="total-pagamento" class="text-warning">R$ 0,00</span></h5>
-          <div>
-            <button type="button" class="btn btn-outline-light me-2" onclick="cancelarPagamento()">Cancelar</button>
-            <button type="submit" class="btn btn-primary btn-lg">Confirmar Pagamento</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
-
-
-  
-      <!-- Rodapé -->
+<!-- Rodapé -->
 <footer class="bg-dark text-white text-center py-4">
 
     <div class="container">
@@ -264,10 +622,14 @@
     </div>
    
 </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/state.js"></script>
+<script src="assets/js/navigation.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/order.js"></script>
+<script src="assets/js/account.js"></script>
+<script src="assets/js/categories.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
