@@ -265,6 +265,41 @@ function diminuirQuantidade(id) {
 
 // Exibe a seção de pagamento e rola a tela até ela
 
+/* Função para mostrar o resumo do pedido */
+function atualizarResumoPedido() {
+  const resumo = document.getElementById("resumo-pedido");
+  resumo.innerHTML = "";
+
+  const quantidades = {};
+
+  carrinho.forEach(function(jogo) {
+    if (quantidades[jogo.id]) {
+      quantidades[jogo.id]++;
+    } else {
+      quantidades[jogo.id] = 1;
+    }
+  });
+
+  const jogosExibidos = new Set();
+
+  carrinho.forEach(function(jogo) {
+    if (jogosExibidos.has(jogo.id)) {
+      return;
+    }
+
+    jogosExibidos.add(jogo.id);
+
+    const quantidade = quantidades[jogo.id];
+    const subtotal = jogo.preco * quantidade;
+
+    resumo.innerHTML += `
+      <div class="d-flex justify-content-between mb-2">
+        <span>${jogo.nome} (${quantidade}x)</span>
+        <span>R$ ${subtotal.toFixed(2).replace(".", ",")}</span>
+      </div>
+    `;
+  });
+}
 
 function mostrarFormularioPagamento() {
   if (carrinho.length === 0) {
@@ -272,7 +307,8 @@ function mostrarFormularioPagamento() {
     mostrarSecao("carrinho");
     return;
   }
-
+  
+  atualizarResumoPedido();
   mostrarSecao("pedido");
 }
 
