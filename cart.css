@@ -1,0 +1,38 @@
+.notificacao-carrinho {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #198754;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  animation: animarNotificacao 3s ease-in-out forwards;
+}
+
+@keyframes animarNotificacao {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.notificacao-remocao {
+  background-color: #dc3545;
+}
