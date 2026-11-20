@@ -79,7 +79,7 @@ function removerDoCarrinho(indice) {
 
   const jogoRemovido = carrinho[indice];
 
-  carrinho.splice(indice, 1);
+  carrinho = carrinho.filter(jogo => jogo.id !== jogoRemovido.id);
 
   atualizarCarrinho();
 
