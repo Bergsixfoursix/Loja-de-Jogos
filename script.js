@@ -307,7 +307,7 @@ function mostrarFormularioPagamento() {
     mostrarSecao("carrinho");
     return;
   }
-  
+
   atualizarResumoPedido();
   mostrarSecao("pedido");
 }
@@ -353,7 +353,18 @@ document.getElementById("form-pagamento").addEventListener("submit", function (e
   const email = document.getElementById("email-cliente").value;
   const metodo = document.getElementById("metodo-pagamento").options[document.getElementById("metodo-pagamento").selectedIndex].text;
 
-  alert(`Obrigado pela compra, ${nome}!\n\nPedido confirmado via ${metodo}.\nAs chaves de ativação dos seus ${carrinho.length} jogo(s) foram enviadas para: ${email}`);
+  document.getElementById("confirmacao-quantidade").textContent = carrinho.length;
+
+document.getElementById("confirmacao-total").textContent =
+  document.getElementById("total-pagamento").textContent;
+
+document.getElementById("confirmacao-metodo").textContent = metodo;
+
+const modalConfirmacao = new bootstrap.Modal(
+  document.getElementById("modalPedidoConfirmado")
+);
+
+modalConfirmacao.show();
 
   // Limpa o carrinho, reseta o formulário e esconde a seção de pedido
   carrinho = [];
@@ -456,4 +467,15 @@ function mostrarConta() {
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+// Adiciona automaticamente a barra na validade do cartão
+document.getElementById("validade-cartao").addEventListener("input", function () {
+  let valor = this.value.replace(/\D/g, "").slice(0, 4);
+
+  if (valor.length > 2) {
+    valor = valor.slice(0, 2) + "/" + valor.slice(2);
+  }
+
+  this.value = valor;
+});
 

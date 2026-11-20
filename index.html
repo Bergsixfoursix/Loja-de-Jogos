@@ -445,7 +445,7 @@
           </div>
           <div class="col-md-3">
             <label for="validade-cartao" class="form-label">Validade</label>
-            <input type="text" class="form-control" id="validade-cartao" placeholder="MM/AA">
+            <input type="text" class="form-control" id="validade-cartao" placeholder="MM/AA" pattern="(0[1-9]|1[0-2])/[0-9]{2}" title="Digite a validade no formato MM/AA. Exemplo: 12/28" maxlength="5" required>
           </div>
           <div class="col-md-3">
             <label for="cvv-cartao" class="form-label">CVV</label>
@@ -475,6 +475,57 @@
       </form>
     </div>
   </section>
+
+  <!-- Janela de confirmação do pedido -->
+<div class="modal fade" id="modalPedidoConfirmado" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+
+      <div class="modal-header">
+        <h5 class="modal-title text-success">
+          ✓ Pedido confirmado!
+        </h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <h4>Obrigado pela preferência!</h4>
+
+        <p>Sua compra demonstrativa foi registrada com sucesso.</p>
+
+        <p>
+          <strong>Jogos adquiridos:</strong>
+          <span id="confirmacao-quantidade"></span>
+        </p>
+
+        <p>
+          <strong>Valor total:</strong>
+          <span id="confirmacao-total" class="text-warning"></span>
+        </p>
+
+        <p>
+          <strong>Forma de pagamento:</strong>
+          <span id="confirmacao-metodo"></span>
+        </p>
+
+        <p class="text-secondary small">
+          Esta é uma simulação. Nenhuma cobrança foi realizada
+          e nenhum e-mail foi enviado.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+                data-bs-dismiss="modal"
+                onclick="mostrarSecao('loja')">
+          Continuar Comprando
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- SEÇÃO CONTA -->
 <section id="conta" class="container my-5 d-none">
