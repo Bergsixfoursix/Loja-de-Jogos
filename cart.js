@@ -67,13 +67,18 @@
 
       jogosExibidos.add(jogo.id);
       lista.innerHTML += `
-        <div class="card bg-secondary text-white mb-3">
-          <div class="card-body d-flex justify-content-between align-items-center">
-            <div>
-              <h5>${jogo.nome}</h5>
-              <p class="text-warning mb-0">R$ ${jogo.preco.toFixed(2).replace(".", ",")}</p>
+        <div class="card bg-secondary text-white mb-3 cart-item">
+          <div class="card-body d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div class="cart-game-info d-flex align-items-center gap-3">
+              <div class="cart-game-thumbnail">
+                <img src="${jogo.imagem}" class="cart-game-image" alt="Capa de ${jogo.nome}" onerror="this.style.display='none';this.parentElement.classList.add('cart-game-thumbnail-fallback')">
+              </div>
+              <div>
+                <h5>${jogo.nome}</h5>
+                <p class="text-warning mb-0">R$ ${jogo.preco.toFixed(2).replace(".", ",")}</p>
+              </div>
             </div>
-            <div class="d-flex align-items-center gap-2">
+            <div class="cart-game-controls d-flex align-items-center gap-2">
               <button class="btn btn-outline-light btn-sm" onclick="diminuirQuantidade(${jogo.id})">−</button>
               <span>${quantidades.get(jogo.id)}</span>
               <button class="btn btn-outline-light btn-sm" onclick="aumentarQuantidade(${jogo.id})">+</button>
