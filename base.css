@@ -1,0 +1,26 @@
+:root {
+  --bg-dark: #0b0f19;
+  --card-bg: #151c2c;
+  --accent-purple: #5d28d8;
+  --accent-cyan: #0ca4d3;
+}
+
+body {
+  background-color: var(--bg-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-control {
+  background-color: #ffffff;
+  border: 1px solid #888;
+  color: #050000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mb-4 {
+  background: linear-gradient(135deg, #181920 0%, #0d1117 100%) !important;
+  border-color: #0955c7 !important;
+  box-shadow: 0 0 25px rgba(91, 9, 199, 0.2) !important;
+  font-weight: bold !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
