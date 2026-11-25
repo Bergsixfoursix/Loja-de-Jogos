@@ -158,3 +158,24 @@
 #pesquisa-jogos::placeholder {
   color: #cccccc;
 }
+.titulo-categorias {
+  background: linear-gradient(135deg, #181920, #0d1117);
+  border: 2px solid #0955c7;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(91, 9, 199, 0.2);
+}
+
+.descricao-categorias {
+  border: 1px solid #0955c7;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  color: #d1d5db;
+  background-color: #151c2c;
+}
