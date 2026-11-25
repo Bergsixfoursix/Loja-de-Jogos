@@ -1,4 +1,21 @@
 (function() {
+    function mostrarAvisoConta(titulo, mensagem, sucesso) {
+    const modal = document.getElementById("modalAvisoConta");
+    const icone = document.getElementById("iconeAvisoConta");
+
+    document.getElementById("tituloAvisoConta").textContent = titulo;
+    document.getElementById("mensagemAvisoConta").textContent = mensagem;
+
+    icone.textContent = sucesso ? "✓" : "!";
+    icone.className = sucesso
+      ? "display-3 mb-3 text-success"
+      : "display-3 mb-3 text-danger";
+
+    document.getElementById("botaoAvisoConta").textContent =
+      sucesso ? "Continuar" : "Tentar novamente";
+
+    bootstrap.Modal.getOrCreateInstance(modal).show();
+  }
   function mostrarCadastro() {
     const areaLogin = document.getElementById("area-login");
     const areaCadastro = document.getElementById("area-cadastro");
@@ -64,7 +81,11 @@
         };
 
         localStorage.setItem("usuarioGamezone", JSON.stringify(usuario));
-        alert("Perfil demonstrativo criado!");
+        mostrarAvisoConta(
+  "Conta criada com sucesso!",
+  "Bem-vindo à Gamezone! Seu perfil foi criado.",
+  true
+);
         this.reset();
         abrirPerfil();
       });
@@ -78,7 +99,11 @@
         const usuarioSalvo = localStorage.getItem("usuarioGamezone");
 
         if (!usuarioSalvo) {
-          alert("Crie um perfil primeiro.");
+          mostrarAvisoConta(
+  "Conta não cadastrada",
+  "Crie uma conta para acessar a Gamezone.",
+  false
+);
           return;
         }
 
@@ -86,7 +111,11 @@
         const email = document.getElementById("login-email").value.trim();
 
         if (email.toLowerCase() !== usuario.email.toLowerCase()) {
-          alert("E-mail não encontrado.");
+          mostrarAvisoConta(
+  "E-mail não encontrado",
+  "Verifique o e-mail informado e tente novamente.",
+  false
+);
           return;
         }
 

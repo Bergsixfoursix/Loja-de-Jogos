@@ -425,7 +425,7 @@
     categorias: [
       { nome: "Ação e aventura", jogoIds: [1, 2, 6, 7, 9, 11, 12, 13, 14, 23, 31, 32, 33, 38, 39, 40, 41, 42, 49, 52, 53] },
       { nome: "RPG e fantasia", jogoIds: [8, 10, 15, 17, 20, 28, 29, 34, 35, 45, 46, 47, 48, 50, 51] },
-      { nome: "Tiro", jogoIds: [3, 26, 27, 43, 44] },
+      { nome: "FPS", jogoIds: [3, 26, 27, 43, 44] },
       { nome: "Esportes e luta", jogoIds: [4, 5, 24, 25, 36, 37] },
       { nome: "Corrida", jogoIds: [16, 54, 55] },
       { nome: "Simulação e cooperativo", jogoIds: [18, 19, 21, 22, 30] }

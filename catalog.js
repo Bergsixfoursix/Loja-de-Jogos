@@ -25,6 +25,30 @@
       currency: "BRL"
     });
   }
+  
+    function renderizarPrecoCard(jogo) {
+    const desconto = calcularDesconto(jogo);
+
+    return `
+      <div class="game-price p-3 text-center">
+        ${desconto
+          ? `
+            <span class="text-white-50 text-decoration-line-through me-2">
+              ${formatarPreco(jogo.precoOriginal)}
+            </span>
+            <span class="text-success fw-bold fs-5">
+              ${formatarPreco(jogo.preco)}
+            </span>
+          `
+          : `
+            <span class="text-warning fw-bold fs-5">
+              ${formatarPreco(jogo.preco)}
+            </span>
+          `
+        }
+      </div>
+    `;
+  }
 
   function ordenarJogosAlfabeticamente(jogos) {
     return [...jogos].sort((jogoA, jogoB) =>
@@ -45,6 +69,7 @@
             <h5 class="card-title game-title-overlay">${nome}</h5>
             ${desconto ? `<span class="tag-desconto game-discount-overlay">${desconto}% OFF</span>` : ""}
           </div>
+          ${renderizarPrecoCard(jogo)}
         </div>
       </div>
     `;
@@ -121,8 +146,14 @@
         const card = cardsPorId.get(jogo.id);
 
         if (card) {
-          gradeLoja.appendChild(card);
-        }
+  const capa = card.querySelector(".game-cover");
+
+  if (capa && !card.querySelector(".game-price")) {
+    capa.insertAdjacentHTML("afterend", renderizarPrecoCard(jogo));
+  }
+
+  gradeLoja.appendChild(card);
+}
       });
     }
 

@@ -116,6 +116,54 @@
     </div>
   </section>
 
+  <!-- MODAL DE PAGAMENTO PIX -->
+<div class="modal fade" id="modalPagamentoPix" tabindex="-1"
+     aria-labelledby="tituloPagamentoPix" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary rounded-4">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="tituloPagamentoPix">
+          Pagamento via PIX
+        </h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center p-4">
+
+        <p class="text-white-50">
+          QR Code demonstrativo para pagamento
+        </p>
+
+        <h2 id="valor-pix" class="text-warning fw-bold mb-4">
+          R$ 0,00
+        </h2>
+
+        <div class="bg-white rounded-3 p-3 d-inline-block mb-3">
+          <img src="qrcode-pix.png" width="180" height="180"
+               alt="QR Code demonstrativo">
+        </div>
+
+        <p class="text-warning">
+          Aguardando pagamento...
+        </p>
+
+        <p class="text-white-50 small">
+          Esta é uma simulação. Nenhuma cobrança será realizada.
+        </p>
+
+        <button type="button" id="simular-pix"
+                class="btn btn-success w-100 py-2">
+          Simular Pagamento
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- Janela de confirmação do pedido -->
 <div class="modal fade" id="modalPedidoConfirmado" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
