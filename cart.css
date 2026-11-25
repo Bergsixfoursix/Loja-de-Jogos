@@ -1,0 +1,82 @@
+.notificacao-carrinho {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #198754;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  animation: animarNotificacao 3s ease-in-out forwards;
+}
+
+@keyframes animarNotificacao {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.notificacao-remocao {
+  background-color: #dc3545;
+}
+
+.cart-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+.cart-game-thumbnail {
+  width: 100px;
+  height: 68px;
+  flex: 0 0 100px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #151c2c;
+}
+
+.cart-game-thumbnail-fallback {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(12, 164, 211, 0.3), transparent 40%),
+    linear-gradient(135deg, #242f46, #111720);
+}
+
+.cart-game-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-game-info h5 {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 575.98px) {
+  .cart-game-thumbnail {
+    width: 80px;
+    height: 60px;
+    flex-basis: 80px;
+  }
+
+  .cart-game-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

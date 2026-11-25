@@ -40,18 +40,59 @@ function adicionarAoCarrinho(id) {
   if (jogo) {
     carrinho.push(jogo);
     atualizarCarrinho();
+    mostrarNotificacao(jogo.nome);
   }
-
 }
+
+  /* Notificação de produto adicionado */
+function mostrarNotificacao(nomeJogo) {
+  const notificacao = document.createElement("div");
+
+  notificacao.className = "notificacao-carrinho";
+  notificacao.textContent = `✓ ${nomeJogo} adicionado ao carrinho!`;
+
+  document.body.appendChild(notificacao);
+
+  setTimeout(function() {
+    notificacao.remove();
+  }, 3000);
+}
+
+/* Notificação de jogo removido */
+function mostrarNotificacaoRemocao(nomeJogo) {
+    const notificacao = document.createElement("div");
+
+    notificacao.className = "notificacao-carrinho notificacao-remocao";
+
+    notificacao.textContent = `✖ ${nomeJogo} removido do carrinho!`;
+
+    document.body.appendChild(notificacao);
+
+    setTimeout(function() {
+        notificacao.remove();
+    }, 3000);
+}
+
  
 /*Função para remover o jogo*/
 function removerDoCarrinho(indice) {
 
-  carrinho.splice(indice, 1);
+  const jogoRemovido = carrinho[indice];
+
+  carrinho = carrinho.filter(jogo => jogo.id !== jogoRemovido.id);
 
   atualizarCarrinho();
 
+  mostrarNotificacaoRemocao(jogoRemovido.nome);
+
 }
+
+/* Função para limpar todo o carrinho */
+function limparCarrinho() {
+    carrinho = [];
+    atualizarCarrinho();
+}
+
 /*Função para mostrar a biblioteca*/
 function mostrarBiblioteca() {
   const loja = document.getElementById("loja");
@@ -74,21 +115,41 @@ function mostrarLoja() {
 /* Pesquisa de jogos */
 const pesquisa = document.getElementById("pesquisa-jogos");
 const cardsJogos = document.querySelectorAll(".jogo");
+const biblioteca = document.getElementById("biblioteca");
+const loja = document.getElementById("loja");
+const resultadosBiblioteca = document.getElementById("resultados-biblioteca");
 
 pesquisa.addEventListener("input", function() {
   const texto = pesquisa.value.toLowerCase();
   let encontrados = 0;
 
-  cardsJogos.forEach(function(card) {
-    const nomeJogo = card.querySelector(".card-title").textContent.toLowerCase();
+  resultadosBiblioteca.innerHTML = "";
+resultadosBiblioteca.classList.add("d-none");
 
-    if (nomeJogo.includes(texto)) {
-      card.style.display = "";
-      encontrados++;
-    } else {
-      card.style.display = "none";
+const nomesEncontrados = new Set();
+
+cardsJogos.forEach(function(card) {
+  const nomeJogo = card.querySelector(".card-title").textContent.trim().toLowerCase();
+  const corresponde = nomeJogo.includes(texto);
+  const estaNaLoja = loja.contains(card);
+
+  if (estaNaLoja) {
+    card.style.display = corresponde ? "" : "none";
+  } else {
+    card.style.display = "";
+  }
+
+  if (corresponde && !nomesEncontrados.has(nomeJogo)) {
+    nomesEncontrados.add(nomeJogo);
+    encontrados++;
+
+    if (!estaNaLoja && texto !== "") {
+      const copia = card.cloneNode(true);
+      resultadosBiblioteca.appendChild(copia);
+      resultadosBiblioteca.classList.remove("d-none");
     }
-  });
+  }
+});
 
 const mensagem = document.getElementById("sem-resultados");
 
@@ -106,13 +167,33 @@ function atualizarCarrinho() {
   const totalPagamentoElemento = document.getElementById("total-pagamento"); // Novo
   const contador = document.getElementById("cart-count");
   const btnIrPagamento = document.getElementById("btn-ir-pagamento"); // Novo
+  const btnLimparCarrinho = document.getElementById("btn-limpar-carrinho");
 
   lista.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach((jogo, indice) => {
-    total += jogo.preco;
-    lista.innerHTML += `
+  const quantidades = {};
+
+carrinho.forEach(function(jogo) {
+  if (quantidades[jogo.id]) {
+    quantidades[jogo.id]++;
+  } else {
+    quantidades[jogo.id] = 1;
+  }
+});
+
+  const jogosExibidos = new Set();
+
+carrinho.forEach((jogo, indice) => {
+  total += jogo.preco;
+
+  if (jogosExibidos.has(jogo.id)) {
+    return;
+  }
+
+  jogosExibidos.add(jogo.id);
+
+  lista.innerHTML += `
       <div class="card bg-secondary text-white mb-3">
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
@@ -121,9 +202,19 @@ function atualizarCarrinho() {
               R$ ${jogo.preco.toFixed(2).replace(".", ",")}
             </p>
           </div>
-          <button class="btn btn-danger" onclick="removerDoCarrinho(${indice})">
-            Remover
-          </button>
+          <div class="d-flex align-items-center gap-2">
+
+  <button class="btn btn-outline-light btn-sm"
+    onclick="diminuirQuantidade(${jogo.id})">−</button>
+
+  <span>${quantidades[jogo.id]}</span>
+
+  <button class="btn btn-outline-light btn-sm"
+    onclick="aumentarQuantidade(${jogo.id})">+</button>
+
+  <button class="btn btn-danger btn-sm"
+    onclick="removerDoCarrinho(${indice})">Remover</button>
+</div>
         </div>
       </div>
     `;
@@ -134,8 +225,10 @@ function atualizarCarrinho() {
     btnIrPagamento.classList.add("d-none"); // Esconde o botão se esvaziar
     document.getElementById("pedido").classList.add("d-none"); // Esconde o formulário
     document.getElementById("carrinho").classList.remove("d-none");
+    btnLimparCarrinho.classList.add("d-none");
   } else {
     btnIrPagamento.classList.remove("d-none"); // Mostra o botão se houver itens
+    btnLimparCarrinho.classList.remove("d-none");
   }
 
   const totalFormatado = total.toLocaleString("pt-BR", {
@@ -150,10 +243,63 @@ function atualizarCarrinho() {
   contador.textContent = carrinho.length;
 }
 
+function aumentarQuantidade(id) {
+  const jogo = jogos.find(jogo => jogo.id === id);
+
+  if (jogo) {
+    carrinho.push(jogo);
+    atualizarCarrinho();
+  }
+}
+
+function diminuirQuantidade(id) {
+  const indice = carrinho.findIndex(jogo => jogo.id === id);
+
+  if (indice !== -1) {
+    carrinho.splice(indice, 1);
+    atualizarCarrinho();
+  }
+}
+
 /* --- NOVAS FUNÇÕES PARA O PAGAMENTO --- */
 
 // Exibe a seção de pagamento e rola a tela até ela
 
+/* Função para mostrar o resumo do pedido */
+function atualizarResumoPedido() {
+  const resumo = document.getElementById("resumo-pedido");
+  resumo.innerHTML = "";
+
+  const quantidades = {};
+
+  carrinho.forEach(function(jogo) {
+    if (quantidades[jogo.id]) {
+      quantidades[jogo.id]++;
+    } else {
+      quantidades[jogo.id] = 1;
+    }
+  });
+
+  const jogosExibidos = new Set();
+
+  carrinho.forEach(function(jogo) {
+    if (jogosExibidos.has(jogo.id)) {
+      return;
+    }
+
+    jogosExibidos.add(jogo.id);
+
+    const quantidade = quantidades[jogo.id];
+    const subtotal = jogo.preco * quantidade;
+
+    resumo.innerHTML += `
+      <div class="d-flex justify-content-between mb-2">
+        <span>${jogo.nome} (${quantidade}x)</span>
+        <span>R$ ${subtotal.toFixed(2).replace(".", ",")}</span>
+      </div>
+    `;
+  });
+}
 
 function mostrarFormularioPagamento() {
   if (carrinho.length === 0) {
@@ -162,6 +308,7 @@ function mostrarFormularioPagamento() {
     return;
   }
 
+  atualizarResumoPedido();
   mostrarSecao("pedido");
 }
 
@@ -206,7 +353,18 @@ document.getElementById("form-pagamento").addEventListener("submit", function (e
   const email = document.getElementById("email-cliente").value;
   const metodo = document.getElementById("metodo-pagamento").options[document.getElementById("metodo-pagamento").selectedIndex].text;
 
-  alert(`Obrigado pela compra, ${nome}!\n\nPedido confirmado via ${metodo}.\nAs chaves de ativação dos seus ${carrinho.length} jogo(s) foram enviadas para: ${email}`);
+  document.getElementById("confirmacao-quantidade").textContent = carrinho.length;
+
+document.getElementById("confirmacao-total").textContent =
+  document.getElementById("total-pagamento").textContent;
+
+document.getElementById("confirmacao-metodo").textContent = metodo;
+
+const modalConfirmacao = new bootstrap.Modal(
+  document.getElementById("modalPedidoConfirmado")
+);
+
+modalConfirmacao.show();
 
   // Limpa o carrinho, reseta o formulário e esconde a seção de pedido
   carrinho = [];
@@ -309,4 +467,15 @@ function mostrarConta() {
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+// Adiciona automaticamente a barra na validade do cartão
+document.getElementById("validade-cartao").addEventListener("input", function () {
+  let valor = this.value.replace(/\D/g, "").slice(0, 4);
+
+  if (valor.length > 2) {
+    valor = valor.slice(0, 2) + "/" + valor.slice(2);
+  }
+
+  this.value = valor;
+});
 
