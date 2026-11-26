@@ -20,16 +20,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Loja</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/categorias.html">Categorias</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/carrinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
-        </ul>
-        <div class="navbar-nav">
-          <a class="nav-link" href="../pages/pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
-          <a class="nav-link" href="../pages/conta.html">Conta</a>
-        </div>
-      </div>
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item"><a class="nav-link" href="../index.html">Loja</a></li>
+    <li class="nav-item"><a class="nav-link" href="categorias.html">Categorias</a></li>
+    <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="../suporte.html">Suporte</a></li>
+  </ul>
+  <div class="navbar-nav">
+    <a class="nav-link" href="pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
+    <a class="nav-link" href="conta.html">Conta</a>
+  </div>
+</div>
     </div>
   </nav>
 </header>
@@ -116,6 +117,54 @@
     </div>
   </section>
 
+  <!-- MODAL DE PAGAMENTO PIX -->
+<div class="modal fade" id="modalPagamentoPix" tabindex="-1"
+     aria-labelledby="tituloPagamentoPix" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary rounded-4">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="tituloPagamentoPix">
+          Pagamento via PIX
+        </h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center p-4">
+
+        <p class="text-white-50">
+          QR Code demonstrativo para pagamento
+        </p>
+
+        <h2 id="valor-pix" class="text-warning fw-bold mb-4">
+          R$ 0,00
+        </h2>
+
+        <div class="bg-white rounded-3 p-3 d-inline-block mb-3">
+          <img src="https://github.com/Bergsixfoursix/Loja-de-Jogos/blob/victordka-patch/qrcode-pix.png?raw=true" width="180" height="180"
+               alt="QR Code demonstrativo">
+        </div>
+
+        <p class="text-warning">
+          Aguardando pagamento...
+        </p>
+
+        <p class="text-white-50 small">
+          Esta é uma simulação. Nenhuma cobrança será realizada.
+        </p>
+
+        <button type="button" id="simular-pix"
+                class="btn btn-success w-100 py-2">
+          Simular Pagamento
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- Janela de confirmação do pedido -->
 <div class="modal fade" id="modalPedidoConfirmado" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -191,5 +240,6 @@
 <script src="../assets/js/account.js"></script>
 <script src="../assets/js/categories.js"></script>
 <script src="../assets/js/app.js"></script>
+
 </body>
 </html>
