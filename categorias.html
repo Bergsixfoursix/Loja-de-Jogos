@@ -23,6 +23,7 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="categorias.html">Categorias</a></li>
           <li class="nav-item"><a class="nav-link" href="carinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="suporte.html">Suporte</a></li>
         </ul>
         <div class="navbar-nav">
           <a class="nav-link" href="pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
@@ -36,6 +37,12 @@
 <main class="container my-5">
   <h1 class="mb-4 titulo-categorias">Categorias de jogos</h1>
   <p class="mb-4 descricao-categorias">Explore os jogos por estilo. Clique em uma capa para ver a descrição e adicionar o jogo ao carrinho.</p>
+
+  <!-- Menu de navegação por gêneros -->
+<nav id="menu-generos" class="d-flex flex-wrap justify-content-center gap-3 mb-5"
+     aria-label="Navegação por gêneros">
+</nav>
+
   <div id="lista-categorias"></div>
   <section id="detalhes-jogo" class="game-details-panel d-none mt-5" aria-live="polite" aria-labelledby="detalhes-jogo-titulo "></section>
 </main>

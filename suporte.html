@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte | Gamezone</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="games.css">
+</head>
+
+<body class="bg-dark text-white">
+
+    <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Gamezone</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.html">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link" href="carinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="suporte.html">Suporte</a></li>
+        </ul>
+
+        <div class="navbar-nav">
+          <a class="nav-link" href="pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
+          <a class="nav-link" href="conta.html">Conta</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    <main class="container my-5">
+
+        <h1 class="titulo-categorias mb-4">Central de Suporte</h1>
+
+        <p class="descricao-categorias mb-5 text-center">
+            Como podemos ajudar você? Encontre respostas para suas dúvidas
+            ou entre em contato com nossa equipe.
+        </p>
+
+        <!-- Perguntas frequentes -->
+        <h2 class="text-warning mb-4">Perguntas frequentes</h2>
+
+        <div class="accordion mb-5" id="perguntas" data-bs-theme="dark">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#pergunta1">
+                        Como recebo meus jogos?
+                    </button>
+                </h2>
+
+                <div id="pergunta1" class="accordion-collapse collapse"
+                    data-bs-parent="#perguntas">
+                    <div class="accordion-body">
+                        Em uma loja real, os jogos digitais seriam disponibilizados
+                        após a confirmação do pagamento. A Gamezone é um projeto
+                        acadêmico demonstrativo.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#pergunta2">
+                        Quais são as formas de pagamento?
+                    </button>
+                </h2>
+
+                <div id="pergunta2" class="accordion-collapse collapse"
+                    data-bs-parent="#perguntas">
+                    <div class="accordion-body">
+                        A Gamezone permite simular pagamentos via PIX,
+                        cartão de crédito e boleto bancário.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#pergunta3">
+                        Como criar uma conta?
+                    </button>
+                </h2>
+
+                <div id="pergunta3" class="accordion-collapse collapse"
+                    data-bs-parent="#perguntas">
+                    <div class="accordion-body">
+                        Acesse a página Minha Conta e preencha o formulário
+                        de cadastro.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#pergunta4">
+                        Como solicitar um reembolso?
+                    </button>
+                </h2>
+
+                <div id="pergunta4" class="accordion-collapse collapse"
+                    data-bs-parent="#perguntas">
+                    <div class="accordion-body">
+                        Como a Gamezone é um projeto acadêmico, nenhum pagamento
+                        real é realizado e não há necessidade de reembolso.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Formulário de contato -->
+        <h2 class="text-warning mb-4">Entre em contato</h2>
+
+        <form id="form-suporte" class="descricao-categorias p-4">
+
+            <div class="mb-3">
+                <label for="nome-suporte" class="form-label">Nome</label>
+                <input type="text" id="nome-suporte" class="form-control"
+                    placeholder="Seu nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email-suporte" class="form-label">E-mail</label>
+                <input type="email" id="email-suporte" class="form-control"
+                    placeholder="Seu e-mail" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="assunto-suporte" class="form-label">Assunto</label>
+                <select id="assunto-suporte" class="form-select" required>
+                    <option value="">Selecione um assunto</option>
+                    <option>Problemas com a conta</option>
+                    <option>Problemas com pagamentos</option>
+                    <option>Dúvidas sobre jogos</option>
+                    <option>Sugestões</option>
+                    <option>Outros</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="mensagem-suporte" class="form-label">Mensagem</label>
+                <textarea id="mensagem-suporte" class="form-control"
+                    rows="5" placeholder="Descreva seu problema..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Enviar mensagem
+            </button>
+
+            <p class="text-white-50 text-center mt-3 mb-0">
+                Formulário demonstrativo para fins acadêmicos.
+            </p>
+
+        </form>
+
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p class="mb-2">&copy; 2026 Gamezone.com Todos os direitos reservados.</p>
+    <p class="mb-0">Desenvolvido com HTML, CSS, Bootstrap e JavaScript.</p>
+  </div>
+</footer>
+
+    <!-- Modal de confirmação -->
+    <div class="modal fade" id="modalSuporte" tabindex="-1"
+        aria-label="Confirmação de contato">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border-primary">
+                <div class="modal-body text-center p-4">
+
+                    <h1 class="text-success">✓</h1>
+
+                    <h3>Mensagem registrada!</h3>
+
+                    <p>
+                        Sua solicitação foi simulada com sucesso.
+                        Obrigado por entrar em contato com a Gamezone!
+                    </p>
+
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                        Fechar
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="state.js"></script>
+<script src="navigation.js"></script>
+<script src="cart.js"></script>
+<script src="catalog.js"></script>
+<script src="order.js"></script>
+<script src="account.js"></script>
+<script src="categories.js"></script>
+<script src="app.js"></script>
+
+    <script>
+        document.getElementById("form-suporte").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const modal = bootstrap.Modal.getOrCreateInstance(
+                document.getElementById("modalSuporte")
+            );
+
+            modal.show();
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>

@@ -179,3 +179,25 @@
   color: #d1d5db;
   background-color: #151c2c;
 }
+
+/* Menu de navegação por gêneros */
+.btn-genero {
+  background: linear-gradient(135deg, #181920, #0d1117);
+  color: #ffffff;
+  border: 1px solid #0955c7;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-genero:hover {
+  background: #0955c7;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(9, 85, 199, 0.5);
+}
+
+.secao-categoria {
+  scroll-margin-top: 90px;
+}
