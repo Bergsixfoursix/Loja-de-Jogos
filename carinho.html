@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <title>Carrinho | Gamezone</title>
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/navigation.css">
   <link rel="stylesheet" href="../assets/css/games.css">
   <link rel="stylesheet" href="../assets/css/cart.css">
+  <title>Carrinho | Gamezone</title>
 </head>
 <body class="bg-dark text-white">
 <header>
@@ -19,22 +19,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Loja</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/categorias.html">Categorias</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/carrinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
-        </ul>
-        <div class="navbar-nav">
-          <a class="nav-link" href="../pages/pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
-          <a class="nav-link" href="../pages/conta.html">Conta</a>
-        </div>
-      </div>
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item"><a class="nav-link" href="../index.html">Loja</a></li>
+    <li class="nav-item"><a class="nav-link" href="categorias.html">Categorias</a></li>
+    <li class="nav-item"><a class="nav-link" href="carrinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="../suporte.html">Suporte</a></li>
+  </ul>
+  <div class="navbar-nav">
+    <a class="nav-link" href="pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
+    <a class="nav-link" href="conta.html">Conta</a>
+  </div>
+</div>
     </div>
   </nav>
 </header>
 <!-- Seção do Carrinho -->
   <section id="carrinho" class="container my-5">
-    <h2 class="mb-4">Meu Carrinho</h2>
+    <h2 class="mb-4 titulo-categorias">Meu Carrinho</h2>
 
 
     <div id="lista-carrinho">
@@ -115,5 +116,6 @@
 <script src="../assets/js/account.js"></script>
 <script src="../assets/js/categories.js"></script>
 <script src="../assets/js/app.js"></script>
+
 </body>
 </html>
