@@ -1,6 +1,111 @@
 (function() {
   const app = window.Gamezone;
 
+  function mostrarAvisoCarrinhoVazio() {
+  if (!document.getElementById("modalCarrinhoVazio")) {
+    document.body.insertAdjacentHTML("beforeend", `
+      <div class="modal fade" id="modalCarrinhoVazio" tabindex="-1"
+           aria-labelledby="tituloCarrinhoVazio" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+              <h5 class="modal-title text-warning" id="tituloCarrinhoVazio">
+                Carrinho vazio
+              </h5>
+              <button type="button" class="btn-close btn-close-white"
+                      data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+
+            <div class="modal-body text-center p-4">
+              <h4 class="mb-3">Seu carrinho está vazio</h4>
+              <p class="text-white-50">
+                Explore nosso catálogo e adicione seus jogos
+                favoritos antes de realizar um pedido.
+              </p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-light"
+                      data-bs-dismiss="modal">
+                Cancelar
+              </button>
+
+              <a href="index.html" class="btn btn-primary">
+                Continuar comprando
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    `);
+  }
+
+  const modal = bootstrap.Modal.getOrCreateInstance(
+    document.getElementById("modalCarrinhoVazio")
+  );
+
+  modal.show();
+}
+
+  function exigirCadastro() {
+    const usuarioCadastrado = localStorage.getItem("usuarioGamezone");
+    const sessaoAtiva = sessionStorage.getItem("sessaoGamezone") === "ativa";
+
+    if (usuarioCadastrado && sessaoAtiva) {
+      return true;
+    }
+
+    if (!document.getElementById("modalLoginObrigatorio")) {
+  document.body.insertAdjacentHTML("beforeend", `
+    <div class="modal fade" id="modalLoginObrigatorio" tabindex="-1"
+         aria-labelledby="tituloLoginObrigatorio" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+
+          <div class="modal-header">
+            <h5 class="modal-title text-warning" id="tituloLoginObrigatorio">
+              Login necessário
+            </h5>
+            <button type="button" class="btn-close btn-close-white"
+                    data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+
+          <div class="modal-body text-center p-4">
+            <h4 class="mb-3">Acesse sua conta</h4>
+
+            <p class="text-white-50">
+              Entre na sua conta ou cadastre-se na Gamezone
+              para continuar com o pagamento dos seus jogos.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-light"
+                    data-bs-dismiss="modal">
+              Cancelar
+            </button>
+
+            <a href="conta.html" class="btn btn-primary">
+              Acessar minha conta
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+const modalLogin = bootstrap.Modal.getOrCreateInstance(
+  document.getElementById("modalLoginObrigatorio")
+);
+
+modalLogin.show();
+return false;
+  }
+
   function atualizarResumoPedido() {
     const resumo = document.getElementById("resumo-pedido");
 
@@ -61,9 +166,12 @@
   }
 
   window.mostrarFormularioPagamento = function() {
+    if (!exigirCadastro()) {
+      return;
+    }
+
     if (app.carrinho.length === 0) {
-      alert("Adicione um jogo ao carrinho primeiro!");
-      window.mostrarSecao("carrinho");
+      mostrarAvisoCarrinhoVazio();
       return;
     }
 
@@ -113,13 +221,23 @@
 
     const formPagamento = document.getElementById("form-pagamento");
 
+    if (formPagamento && !exigirCadastro()) {
+      formPagamento.addEventListener("submit", function(event) {
+        event.preventDefault();
+      });
+      return;
+    }
+
     if (formPagamento) {
       formPagamento.addEventListener("submit", function(event) {
         event.preventDefault();
 
+        if (!exigirCadastro()) {
+          return;
+        }
+
         if (app.carrinho.length === 0) {
-          alert("Adicione um jogo ao carrinho primeiro!");
-          window.mostrarSecao("carrinho");
+          mostrarAvisoCarrinhoVazio();
           return;
         }
 
@@ -141,6 +259,25 @@
           };
 
           modalPix.show();
+          return;
+        }
+
+                if (metodoPagamento.value === "boleto") {
+          document.getElementById("valor-boleto").textContent =
+            document.getElementById("total-pagamento").textContent;
+
+          const elementoBoleto = document.getElementById("modalPagamentoBoleto");
+          const modalBoleto = bootstrap.Modal.getOrCreateInstance(elementoBoleto);
+
+          document.getElementById("simular-boleto").onclick = function() {
+            elementoBoleto.addEventListener("hidden.bs.modal", function() {
+              confirmarPedido(metodo, formPagamento);
+            }, { once: true });
+
+            modalBoleto.hide();
+          };
+
+          modalBoleto.show();
           return;
         }
 

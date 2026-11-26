@@ -33,10 +33,10 @@
       <div class="game-price p-3 text-center">
         ${desconto
           ? `
-            <span class="text-white-50 text-decoration-line-through me-2">
+            <span class="text-danger text-decoration-line-through me-2">
               ${formatarPreco(jogo.precoOriginal)}
             </span>
-            <span class="text-success fw-bold fs-5">
+            <span class="text-warning fw-bold fs-5">
               ${formatarPreco(jogo.preco)}
             </span>
           `

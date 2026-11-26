@@ -14,6 +14,19 @@
   background-color: #2b2d35 !important;
 }
 
+#conta .card.bg-secondary,
+#conta .card.bg-secondary:hover {
+  cursor: default;
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#conta .card.bg-secondary:hover {
+  border-color: transparent !important;
+  background-color: var(--card-bg) !important;
+}
+
 .card-img-top {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -178,6 +191,8 @@
   font-size: 16px;
   color: #d1d5db;
   background-color: #151c2c;
+  text-align: center;
+
 }
 
 /* Menu de navegação por gêneros */

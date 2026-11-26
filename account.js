@@ -1,3 +1,4 @@
+
 (function() {
     function mostrarAvisoConta(titulo, mensagem, sucesso) {
     const modal = document.getElementById("modalAvisoConta");
@@ -81,6 +82,7 @@
         };
 
         localStorage.setItem("usuarioGamezone", JSON.stringify(usuario));
+        sessionStorage.setItem("sessaoGamezone", "ativa");
         mostrarAvisoConta(
   "Conta criada com sucesso!",
   "Bem-vindo à Gamezone! Seu perfil foi criado.",
