@@ -1,6 +1,19 @@
 (function() {
   const app = window.Gamezone;
 
+  function exigirCadastro() {
+    const usuarioCadastrado = localStorage.getItem("usuarioGamezone");
+    const sessaoAtiva = sessionStorage.getItem("sessaoGamezone") === "ativa";
+
+    if (usuarioCadastrado && sessaoAtiva) {
+      return true;
+    }
+
+    alert("Entre na sua conta ou cadastre-se antes de fazer o pedido.");
+    window.mostrarSecao("conta");
+    return false;
+  }
+
   function atualizarResumoPedido() {
     const resumo = document.getElementById("resumo-pedido");
 
@@ -61,6 +74,10 @@
   }
 
   window.mostrarFormularioPagamento = function() {
+    if (!exigirCadastro()) {
+      return;
+    }
+
     if (app.carrinho.length === 0) {
       alert("Adicione um jogo ao carrinho primeiro!");
       window.mostrarSecao("carrinho");
@@ -77,6 +94,30 @@
 
   window.alternarCamposPagamento = alternarCamposPagamento;
 
+    function confirmarPedido(metodo, formulario) {
+    document.getElementById("confirmacao-quantidade").textContent =
+      app.carrinho.length;
+
+    document.getElementById("confirmacao-total").textContent =
+      document.getElementById("total-pagamento").textContent;
+
+    document.getElementById("confirmacao-metodo").textContent = metodo;
+
+    const modal = bootstrap.Modal.getOrCreateInstance(
+      document.getElementById("modalPedidoConfirmado")
+    );
+
+    modal.show();
+
+    app.carrinho = [];
+    app.salvarCarrinho();
+    app.atualizarCarrinho();
+    atualizarResumoPedido();
+
+    formulario.reset();
+    alternarCamposPagamento();
+  }
+
   app.initCheckout = function() {
     atualizarResumoPedido();
 
@@ -89,9 +130,20 @@
 
     const formPagamento = document.getElementById("form-pagamento");
 
+    if (formPagamento && !exigirCadastro()) {
+      formPagamento.addEventListener("submit", function(event) {
+        event.preventDefault();
+      });
+      return;
+    }
+
     if (formPagamento) {
       formPagamento.addEventListener("submit", function(event) {
         event.preventDefault();
+
+        if (!exigirCadastro()) {
+          return;
+        }
 
         if (app.carrinho.length === 0) {
           alert("Adicione um jogo ao carrinho primeiro!");
@@ -99,23 +151,28 @@
           return;
         }
 
-        const metodo = metodoPagamento.options[metodoPagamento.selectedIndex].text;
-        document.getElementById("confirmacao-quantidade").textContent =
-          app.carrinho.length;
-        document.getElementById("confirmacao-total").textContent =
-          document.getElementById("total-pagamento").textContent;
-        document.getElementById("confirmacao-metodo").textContent = metodo;
+                const metodo = metodoPagamento.options[metodoPagamento.selectedIndex].text;
 
-        const modal = new bootstrap.Modal(
-          document.getElementById("modalPedidoConfirmado")
-        );
-        modal.show();
+        if (metodoPagamento.value === "pix") {
+          document.getElementById("valor-pix").textContent =
+            document.getElementById("total-pagamento").textContent;
 
-        app.carrinho = [];
-        app.salvarCarrinho();
-        app.atualizarCarrinho();
-        this.reset();
-        alternarCamposPagamento();
+          const elementoPix = document.getElementById("modalPagamentoPix");
+          const modalPix = bootstrap.Modal.getOrCreateInstance(elementoPix);
+
+          document.getElementById("simular-pix").onclick = function() {
+            elementoPix.addEventListener("hidden.bs.modal", function() {
+              confirmarPedido(metodo, formPagamento);
+            }, { once: true });
+
+            modalPix.hide();
+          };
+
+          modalPix.show();
+          return;
+        }
+
+        confirmarPedido(metodo, formPagamento);
       });
     }
 
