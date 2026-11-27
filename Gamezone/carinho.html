@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="games.css">
+  <link rel="stylesheet" href="cart.css">
+  <title>Carrinho | Gamezone</title>
+</head>
+<body class="bg-dark text-white">
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Gamezone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item"><a class="nav-link" href="index.html">Loja</a></li>
+    <li class="nav-item"><a class="nav-link" href="categorias.html">Categorias</a></li>
+    <li class="nav-item"><a class="nav-link" href="carinho.html">Carrinho <span class="badge bg-danger rounded-pill" id="cart-count">0</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="suporte.html">Suporte</a></li>
+  </ul>
+  <div class="navbar-nav">
+    <a class="nav-link" href="pedido.html" onclick="abrirPedido(); return false;">Pedido</a>
+    <a class="nav-link" href="conta.html">Conta</a>
+  </div>
+</div>
+    </div>
+  </nav>
+</header>
+<!-- Seção do Carrinho -->
+  <section id="carrinho" class="container my-5">
+    <h2 class="mb-4 titulo-categorias">Meu Carrinho</h2>
+
+
+    <div id="lista-carrinho">
+      <p>Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <h4>
+        Total: <span id="total-carrinho" class="text-warning">R$ 0,00</span>
+      </h4>
+      <button id="btn-ir-pagamento" class="btn btn-success btn-lg d-none" onclick="mostrarFormularioPagamento()">
+        Prosseguir para o Pagamento
+      </button>
+
+      <button id="btn-limpar-carrinho"
+              class="btn btn-danger btn-lg d-none"
+              data-bs-toggle="modal"
+              data-bs-target="#modalLimparCarrinho">
+       Limpar Carrinho
+      </button>
+      
+    </div>
+  </section>
+
+  <!-- Janela de confirmação para limpar o carrinho -->
+<div class="modal fade" id="modalLimparCarrinho" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Limpar Carrinho</h5>
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        Deseja realmente remover todos os jogos do carrinho?
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">
+          Cancelar
+        </button>
+
+        <button type="button" class="btn btn-danger"
+                onclick="limparCarrinho()"
+                data-bs-dismiss="modal">
+          Limpar Carrinho
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Rodapé -->
+<footer class="bg-dark text-white text-center py-4">
+
+    <div class="container">
+        <p class="mb-2">
+            &copy; 2026 Gamezone.com
+            Todos os direitos reservados.
+        </p>
+
+        <p class="mb-0">
+            Desenvolvido com HTML, CSS,
+            Bootstrap e JavaScript.
+        </p>
+    </div>
+   
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="state.js"></script>
+<script src="navigation.js"></script>
+<script src="cart.js"></script>
+<script src="catalog.js"></script>
+<script src="order.js"></script>
+<script src="account.js"></script>
+<script src="categories.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+
+
